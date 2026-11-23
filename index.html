@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOCTURNE // Sound Archive</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/player.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <img src="assets/logo.svg" alt="NOCTURNE Logo" class="logo-svg" />
+        <span class="brand-text">NOCTURNE</span>
+      </a>
+
+      <div class="nav-tabs hidden" id="nav-tabs">
+        <button class="tab-btn active" data-tab="tracks">Top Tracks</button>
+        <button class="tab-btn" data-tab="artists">Top Artists</button>
+        <button class="tab-btn" data-tab="recent">Recently Played</button>
+      </div>
+
+      <div class="nav-right">
+        <div id="user-badge" class="user-badge hidden">
+          <img id="user-avatar" src="" alt="Profile" />
+          <span id="user-name">User</span>
+        </div>
+        <button id="auth-btn" class="btn-primary">Connect Spotify</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Landing / Login Hero -->
+  <main class="main-wrapper">
+    <section id="hero-section" class="hero">
+      <div class="pill-tag">SPOTIFY ANALYTICS & ARCHIVE</div>
+      <h1>Your Sound, <span class="gradient-text">Visualized.</span></h1>
+      <p>Connect your Spotify account to pull your heavy rotation, top artists, and recently played tracks in a high-contrast purple & black interface.</p>
+      <button id="hero-login-btn" class="btn-primary btn-large">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Authorize with Spotify
+      </button>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="dashboard hidden">
+      <div class="dashboard-header">
+        <div>
+          <h2 id="section-title">Top Rotation</h2>
+          <p id="section-subtitle" class="subtitle">Click any track with a preview badge to play a 30s sample</p>
+        </div>
+        <div class="time-filters" id="time-filters">
+          <button class="filter-btn active" data-range="short_term">4 Weeks</button>
+          <button class="filter-btn" data-range="medium_term">6 Months</button>
+          <button class="filter-btn" data-range="long_term">All Time</button>
+        </div>
+      </div>
+
+      <div id="content-grid" class="tracks-grid"></div>
+    </section>
+  </main>
+
+  <!-- Sticky Bottom Audio Player -->
+  <footer id="player-bar" class="player-bar hidden">
+    <div class="player-content">
+      <div class="player-track">
+        <img id="player-cover" src="" alt="Cover" />
+        <div>
+          <div id="player-title" class="player-title">Select a track</div>
+          <div id="player-artist" class="player-artist">--</div>
+        </div>
+      </div>
+
+      <div class="player-controls">
+        <button id="play-pause-btn" class="play-btn">❚❚</button>
+        <div class="progress-wrapper">
+          <span id="current-time">0:00</span>
+          <div id="progress-bar" class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="duration-time">0:30</span>
+        </div>
+      </div>
+
+      <a id="player-spotify-link" href="#" target="_blank" class="btn-outline">Full Song ↗</a>
+    </div>
+    <audio id="audio-player"></audio>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
