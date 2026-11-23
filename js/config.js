@@ -1,6 +1,6 @@
 const CONFIG = {
   // 1. Paste your Spotify Client ID here:
-  CLIENT_ID: 'YOUR_SPOTIFY_CLIENT_ID',
+  CLIENT_ID: '8674656a307b461d93b8ed2765481485',
 
   // 2. Paste your Refresh Token here (click "🔑 Permanent Token" on your live site to copy it)
   // so SONGZ streams full tracks via your Premium account on ANY browser without logging in:
