@@ -2,6 +2,11 @@ const AccessGate = {
   onSuccessCallback: null,
 
   init() {
+    localStorage.removeItem('songz_device_permabanned');
+    localStorage.removeItem('songz_gate_locked');
+    localStorage.setItem('songz_gate_attempts', '0');
+
+    this.modal = document.getElementById('gate-modal');
     this.modal = document.getElementById('gate-modal');
     this.card = this.modal.querySelector('.gate-card');
     this.title = document.getElementById('gate-title');
