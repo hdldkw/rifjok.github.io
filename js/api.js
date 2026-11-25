@@ -3,6 +3,11 @@ const SpotifyAPI = {
     let token = await SpotifyAuth.getValidToken();
     if (!token) return null;
 
+    searchCatalog(query, limit = 30) {
+    const encoded = encodeURIComponent(query);
+    return this.request(`/search?q=${encoded}&type=track&limit=${limit}`);
+  },
+
     const res = await fetch(`${CONFIG.API_BASE}${endpoint}`, {
       ...options,
       headers: {
