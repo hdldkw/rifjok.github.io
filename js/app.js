@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
   AccessGate.init();
 
+  const searchWrapper = document.getElementById('search-bar-wrapper');
+  const searchInput = document.getElementById('spotify-search-input');
+  const searchBtn = document.getElementById('spotify-search-btn');
   const authBtn = document.getElementById('auth-btn');
   const heroLoginBtn = document.getElementById('hero-login-btn');
   const heroSection = document.getElementById('hero-section');
@@ -30,7 +33,20 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
   };
+async function runSpotifySearch() {
+    const query = searchInput.value.trim();
+    if (!query) return;
+    grid.innerHTML = `<p style="color: var(--text-secondary);">Searching Spotify for "${query}"...</p>`;
+    const data = await SpotifyAPI.searchCatalog(query);
+    if (data?.tracks?.items) {
+      UI.renderTracks(data.tracks.items, false, false);
+    }
+  }
 
+  searchBtn.addEventListener('click', runSpotifySearch);
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') runSpotifySearch();
+  });
   authBtn.onclick = handleConnectClick;
   heroLoginBtn.onclick = handleConnectClick;
 
